@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package sms;
+
+// The sms service definition.
+service Sms {
+  // Sends message
+  rpc Send (Request) returns (Reply) {}
+}
+
+// The request message
+message Request {
+  string template = 1;
+  string phone = 2;
+  string params = 3; // json
+}
+
+// The response message
+message Reply {
+  int32 code = 1;
+  string message = 2;
+}
