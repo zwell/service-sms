@@ -8,24 +8,24 @@ import (
 )
 
 type Yaml struct {
-	Port string `yaml:"port"`
+	Port  string `yaml:"port"`
 	Mysql struct {
-		User string `yaml:"user"`
-		Host string `yaml:"host"`
+		User     string `yaml:"user"`
+		Host     string `yaml:"host"`
 		Password string `yaml:"password"`
-		Port string `yaml:"port"`
-		Db string `yaml:"db"`
+		Port     string `yaml:"port"`
+		Db       string `yaml:"db"`
 	}
 	YunPian struct {
 		ApiKey string `yaml:"apikey"`
 	}
 	YunXin struct {
-		AppKey string `yaml:"app_key"`
+		AppKey    string `yaml:"app_key"`
 		AppSecret string `yaml:"app_secret"`
 	}
 }
 
-func GetConf () *Yaml {
+func GetConf() *Yaml {
 	yamlFile, err := ioutil.ReadFile("../conf.yaml")
 	if err != nil {
 		fmt.Println(err.Error())

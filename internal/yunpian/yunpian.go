@@ -18,10 +18,10 @@ func (Yunpian) Send(templateModel *model.TemplateSupplier, phone string, params 
 	// 变量替换
 	templateParams := strings.Split(templateModel.TemplateParams, ",")
 	smsContent = templateModel.TemplateContent
-	for k ,v := range params {
+	for k, v := range params {
 		for _, p := range templateParams {
 			if k == p {
-				temp := strings.Replace(smsContent, "#" + k + "#", v.(string), 1)
+				temp := strings.Replace(smsContent, "#"+k+"#", v.(string), 1)
 				smsContent = temp
 				break
 			}
@@ -39,7 +39,7 @@ func (Yunpian) Send(templateModel *model.TemplateSupplier, phone string, params 
 
 	log.Info("云片短信发送", param, r)
 
-    var code int32
+	var code int32
 	if r.Code == 0 {
 		code = 200
 	} else {
@@ -53,5 +53,5 @@ func (Yunpian) Send(templateModel *model.TemplateSupplier, phone string, params 
 		message = "fail"
 	}
 
-    return &factory.Response{Code:code, Message:message}, smsContent, nil
+	return &factory.Response{Code: code, Message: message}, smsContent, nil
 }

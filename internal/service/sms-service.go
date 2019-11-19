@@ -11,19 +11,37 @@ import (
 )
 
 type SmsService struct {
+}
 
+// 短信发送模板
+type TemplateResult struct {
+	SupplierCode string `db:"supplier_code"`
+	TemplateId   int    `db:"id"`
+	TemplateCode string `db:"code"`
+	TemplateType int    `db:"type"`
 }
 
 // 调用指定的供应商接口，发送短信
-func (*SmsService) Send (templateResult *TemplateResult, phone string, params map[string]interface{}) (*factory.Response, error) {
+func (*SmsService) Send(templateCode string, phone string, params map[string]interface{}) (*factory.Response, error) {
 
-	// 获取发送对象
-	smsSupplier := internal.GetSmsService(templateResult.SupplierCode)
+	// 获取发送的供应商
+	var smsService SmsService
+	templateResult, err := smsService.getSupplier(templateCode)
+	if err != nil {
+		return nil, err
+	}
 
-	var templateSupplierModel = model.TemplateSupplierModel{}
+	// 获取发送模板
+	var templateSupplierModel model.TemplateSupplierModel
 	templateSupplier, err := templateSupplierModel.GetOne(templateResult.TemplateId, templateResult.TemplateType)
 	if err != nil {
-		return nil, errors.New("短信模板不存在")
+		return nil, err
+	}
+
+	// 获取供应商执行类
+	smsSupplier, err := internal.GetSmsService(templateResult.SupplierCode)
+	if err != nil {
+		return nil, err
 	}
 
 	// 发送短信
@@ -47,16 +65,9 @@ func (*SmsService) Send (templateResult *TemplateResult, phone string, params ma
 	return response, nil
 }
 
-type TemplateResult struct {
-	SupplierCode string `db:"supplier_code"`
-	TemplateId int `db:"id"`
-	TemplateCode string `db:"code"`
-	TemplateType int `db:"type"`
-}
-
 // 获取发送短信的供应商
 // 根据价格，优先级筛选
-func (*SmsService) GetSupplier(template string) (*TemplateResult, error) {
+func (*SmsService) getSupplier(template string) (*TemplateResult, error) {
 
 	var querySql = "Select s.code as supplier_code, ts.id, t.code, t.type from template t " +
 		"left join template_supplier ts On ts.template_id = t.id " +
@@ -73,5 +84,3 @@ func (*SmsService) GetSupplier(template string) (*TemplateResult, error) {
 
 	return &templateResult, nil
 }
-
-

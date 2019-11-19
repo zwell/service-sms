@@ -31,7 +31,7 @@ func (*TemplateSupplierModel) GetOne (templateId int, templateType int) (*Templa
 	templateSupplier := TemplateSupplier{}
 	err := database.GetDB().Get(&templateSupplier, querySql, templateId)
 	if err == sql.ErrNoRows {
-		return nil, errors.New("template_supplier not found")
+		return nil, errors.New("短信模板不存在")
 	}
 	if err != nil {
 		return nil, err
