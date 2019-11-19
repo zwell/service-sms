@@ -4,10 +4,10 @@ import (
 	"database/sql"
 	"errors"
 	"time"
-	"zwell.github/mic-server/sms/internal"
-	"zwell.github/mic-server/sms/internal/database"
-	"zwell.github/mic-server/sms/internal/factory"
-	"zwell.github/mic-server/sms/internal/model"
+	"github.com/zwell/service-sms/internal"
+	"github.com/zwell/service-sms/internal/database"
+	"github.com/zwell/service-sms/internal/factory"
+	"github.com/zwell/service-sms/internal/model"
 )
 
 type SmsService struct {

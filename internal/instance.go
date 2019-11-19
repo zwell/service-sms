@@ -2,9 +2,9 @@ package internal
 
 import (
 	"errors"
-	"zwell.github/mic-server/sms/internal/factory"
-	"zwell.github/mic-server/sms/internal/yunpian"
-	"zwell.github/mic-server/sms/internal/yunxin"
+	"github.com/zwell/service-sms/internal/factory"
+	"github.com/zwell/service-sms/internal/yunpian"
+	"github.com/zwell/service-sms/internal/yunxin"
 )
 
 func GetSmsService(typeService string) (factory.Factory, error) {

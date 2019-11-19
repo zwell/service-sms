@@ -4,7 +4,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"
 	"log"
-	"zwell.github/mic-server/sms/internal/config"
+	"github.com/zwell/service-sms/internal/config"
 )
 
 var DB *sqlx.DB

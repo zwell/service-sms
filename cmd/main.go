@@ -6,11 +6,11 @@ import (
 	"fmt"
 	"log"
 	"net"
-	"zwell.github/mic-server/sms/internal/config"
-	"zwell.github/mic-server/sms/internal/service"
+	"github.com/zwell/service-sms/internal/config"
+	"github.com/zwell/service-sms/internal/service"
 
 	"google.golang.org/grpc"
-	pb "zwell.github/mic-server/sms/proto"
+	pb "github.com/zwell/service-sms/proto"
 )
 
 type server struct {

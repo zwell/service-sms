@@ -4,9 +4,9 @@ import (
 	"github.com/micro/go-micro/util/log"
 	ypclnt "github.com/yunpian/yunpian-go-sdk/sdk"
 	"strings"
-	"zwell.github/mic-server/sms/internal/config"
-	"zwell.github/mic-server/sms/internal/factory"
-	"zwell.github/mic-server/sms/internal/model"
+	"github.com/zwell/service-sms/internal/config"
+	"github.com/zwell/service-sms/internal/factory"
+	"github.com/zwell/service-sms/internal/model"
 )
 
 // 云片。主要用来发送一些大厂发送不了的短信模板

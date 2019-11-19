@@ -13,9 +13,9 @@ import (
 	"strconv"
 	"strings"
 	"time"
-	"zwell.github/mic-server/sms/internal/config"
-	"zwell.github/mic-server/sms/internal/factory"
-	"zwell.github/mic-server/sms/internal/model"
+	"github.com/zwell/service-sms/internal/config"
+	"github.com/zwell/service-sms/internal/factory"
+	"github.com/zwell/service-sms/internal/model"
 )
 
 // 云信。网易云旗下服务

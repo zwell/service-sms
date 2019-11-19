@@ -3,7 +3,7 @@ package model
 import (
 	"database/sql"
 	"errors"
-	"zwell.github/mic-server/sms/internal/database"
+	"github.com/zwell/service-sms/internal/database"
 )
 
 type TemplateSupplierModel struct {

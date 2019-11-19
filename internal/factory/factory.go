@@ -1,6 +1,6 @@
 package factory
 
-import "zwell.github/mic-server/sms/internal/model"
+import "github.com/zwell/service-sms/internal/model"
 
 type Response struct {
 	Code    int32
